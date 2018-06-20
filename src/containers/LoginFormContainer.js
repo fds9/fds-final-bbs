@@ -1,10 +1,12 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 
 import LoginForm from '../components/LoginForm';
 import {AuthConsumer} from '../contexts/AuthContext';
 
 export default class LoginFormContainer extends React.Component {
   state = {
+    success: false,
     username: '',
     password: ''
   };
@@ -12,7 +14,10 @@ export default class LoginFormContainer extends React.Component {
   updateUsername = username => this.setState({username});
   updatePassword = password => this.setState({password});
   render() {
-    const {username, password} = this.state;
+    const {success, username, password} = this.state;
+    if (success) return (
+      <Redirect to="/posts" />
+    )
     return (
       <AuthConsumer>
         {({login}) => (
@@ -24,6 +29,7 @@ export default class LoginFormContainer extends React.Component {
             onSubmit={async () => {
               try {
                 await login(username, password);
+                this.setState({success: true});
               } catch (e) {
                 if (e.response && e.response.status === 400) {
                   alert('사용자 이름 혹은 비밀번호가 잘못되었습니다.');
