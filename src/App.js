@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import {AuthProvider} from './contexts/AuthContext';
 import LoginPage from './pages/LoginPage';
 import PostListPage from './pages/PostListPage';
+import PostPage from './pages/PostPage';
 
 class App extends Component {
   render() {
@@ -11,7 +12,8 @@ class App extends Component {
       <BrowserRouter>
         <AuthProvider>
           <Route path="/login" component={LoginPage} />
-          <Route path="/posts" component={PostListPage} />
+          <Route exact path="/posts" component={PostListPage} />
+          <Route path="/posts/:id" component={PostPage} />
           <Route exact path="/" render={() => (
             localStorage.getItem('token') ? (
               <Redirect to="/posts" />
