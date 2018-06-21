@@ -9,10 +9,19 @@ export default class PostFormContainer extends React.Component {
   render() {
     return (
       <PostFormConsumer>
-        {({title, body, updateTitle, updateBody, submit, success, loading}) => loading ? (
+        {({
+          id,
+          title,
+          body,
+          updateTitle,
+          updateBody,
+          submit,
+          success,
+          loading,
+        }) => loading ? (
           <LoadingBox />
         ) : success ? (
-          <Redirect to="/posts" />
+          <Redirect to={`/posts/${id}`} />
         ) : (
           <PostForm
             title={title}

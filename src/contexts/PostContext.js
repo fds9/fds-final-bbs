@@ -12,6 +12,7 @@ class PostProvider extends React.Component {
   state = {
     loading: true,
     id: null,
+    ownerId: null,
     title: null,
     body: null,
     author: null,
@@ -26,6 +27,7 @@ class PostProvider extends React.Component {
         id: res.data.id,
         title: res.data.title,
         body: res.data.body,
+        ownerId: res.data.userId,
         author: res.data.user.username
       });
     } finally {
@@ -35,11 +37,7 @@ class PostProvider extends React.Component {
 
   render() {
     const value = {
-      loading: this.state.loading,
-      id: this.state.id,
-      title: this.state.title,
-      body: this.state.body,
-      author: this.state.author
+      ...this.state
     };
     return (
       <Provider value={value}>{this.props.children}</Provider>

@@ -4,11 +4,11 @@ import {PostFormProvider} from '../contexts/PostFormContext';
 import PostFormContainer from '../containers/PostFormContainer';
 import NavBarContainer from '../containers/NavBarContainer';
 
-export default function NewPostPage() {
+export default function NewPostPage({match}) {
   return (
-    <PostFormProvider>
+    <PostFormProvider id={match.params.id}>
       <NavBarContainer />
-      <h1>새 게시글</h1>
+      <h1>게시글 수정</h1>
       <PostFormContainer />
     </PostFormProvider>
   )

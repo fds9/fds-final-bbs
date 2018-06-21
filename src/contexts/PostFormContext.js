@@ -10,6 +10,7 @@ class PostFormProvider extends React.Component {
   };
 
   state = {
+    id: this.props.id,
     success: false,
     loading: false,
     title: '',
@@ -42,13 +43,12 @@ class PostFormProvider extends React.Component {
     };
     this.setState({loading: true});
     try {
-      if (id) {
-        // 편집
-        await postAPI.patch(`/posts/${id}`, payload);
-      } else {
-        await postAPI.post('/posts', payload);
-      }
-      this.setState({success: true});
+      const res = id ? (
+        await postAPI.patch(`/posts/${id}`, payload)
+      ) : (
+        await postAPI.post('/posts', payload)
+      );
+      this.setState({success: true, id: res.data.id});
     } finally {
       this.setState({loading: false});
     }
