@@ -9632,4 +9632,13 @@ label.panel-block:hover {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem;
 }
+
+.main-layout {
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.comment-list {
+  margin-top: 1rem;
+}
 /*# sourceMappingURL=index.css.map */

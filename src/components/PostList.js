@@ -7,9 +7,15 @@ export default function PostList({
   posts = [], // 게시글 목록
 } = {}) {
   return (
-    <div>
-      <h2>게시글 목록</h2>
-      <Link to="/posts/new">새 게시글</Link>
+    <div className="post-list">
+      <div className="level">
+        <div className="level-left">
+          <h2 className="title">게시글 목록</h2>
+        </div>
+        <div className="level-right">
+          <Link to="/posts/new">새 게시글</Link>
+        </div>
+      </div>
       <ul>
         {posts.map(post => (
           <PostListItem key={post.id} {...post} />

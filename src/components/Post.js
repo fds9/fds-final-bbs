@@ -10,11 +10,17 @@ export default function Post({
 } = {}) {
   return (
     <div>
-      {isOwner && (
-        <Link to={`/posts/${id}/edit`}>편집</Link>
-      )}
-      <h2>{title}</h2>
-      <h3>{author}</h3>
+      <div className="level">
+        <div className="level-left">
+          <h2 className="title">{title}</h2>
+        </div>
+        <div className="level-right">
+          {isOwner && (
+            <Link to={`/posts/${id}/edit`}>편집</Link>
+          )}
+        </div>
+      </div>
+      <p>작성자: {author}</p>
       <p>{body}</p>
     </div>
   )
