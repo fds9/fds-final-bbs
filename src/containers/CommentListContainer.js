@@ -1,20 +1,44 @@
 import React from 'react';
 
-import {CommentListProvider, CommentListConsumer} from '../contexts/CommentListContext';
+import postAPI from '../postAPI';
 import CommentList from '../components/CommentList';
 
-export default function CommentListContainer({
-  postId = null, // 게시글 ID
-}) {
-  return localStorage.getItem('token') ? (
-    <CommentListProvider postId={postId}>
-      <CommentListConsumer>
-        {({loading, comments}) => loading ? null : (
-          <CommentList comments={comments} />
-        )}
-      </CommentListConsumer>
-    </CommentListProvider>
-  ) : (
-    <div>로그인하지 않은 사용자는 댓글을 볼 수 없습니다.</div>
-  )
+export default class CommentListContainer extends React.Component {
+  static defaultProps = {
+    postId: null // 댓글을 불러올 게시글의 ID
+  };
+
+  state = {
+    loading: false,
+    comments: []
+  };
+
+  async componentDidMount() {
+    const {postId} = this.props;
+    this.setState({loading: true});
+    try {
+      const res = await postAPI.get(`/comments?_expand=user&postId=${postId}`);
+      this.setState({
+        comments: res.data.map(c => ({
+          id: c.id,
+          body: c.body,
+          ownerId: c.userId,
+          author: c.user.username
+        }))
+      });
+    } finally {
+      this.setState({
+        loading: false
+      });
+    }
+  }
+
+  render() {
+    const {loading, comments} = this.state;
+    return localStorage.getItem('token') ? (
+      loading || <CommentList comments={comments} />
+    ) : (
+      <div>로그인하지 않은 사용자는 댓글을 볼 수 없습니다.</div>
+    )
+  }
 }
