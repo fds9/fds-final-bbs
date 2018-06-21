@@ -20,6 +20,8 @@ export default class NavBarContainer extends React.Component {
             username={username}
             brandAs={Link}
             brandProps={{to: '/'}}
+            loginAs={Link}
+            loginProps={{to: '/login'}}
             onLogout={() => {
               logout();
               this.setState({loggedOut: true});
