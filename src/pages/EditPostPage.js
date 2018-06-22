@@ -4,8 +4,9 @@ import { PostFormProvider } from '../contexts/PostFormContext';
 import PostFormContainer from '../containers/PostFormContainer';
 import NavBarContainer from '../containers/NavBarContainer';
 import MainLayout from '../components/MainLayout';
+import withAuth from '../hocs/withAuth';
 
-export default function NewPostPage({ match }) {
+function NewPostPage({ match }) {
   return (
     <PostFormProvider id={match.params.id}>
       <NavBarContainer />
@@ -16,3 +17,5 @@ export default function NewPostPage({ match }) {
     </PostFormProvider>
   );
 }
+
+export default withAuth(NewPostPage);
