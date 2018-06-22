@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {PostFormProvider} from '../contexts/PostFormContext';
+import { PostFormProvider } from '../contexts/PostFormContext';
 import PostFormContainer from '../containers/PostFormContainer';
 import NavBarContainer from '../containers/NavBarContainer';
 import MainLayout from '../components/MainLayout';
@@ -13,5 +13,5 @@ export default function NewPostPage() {
         <PostFormContainer />
       </MainLayout>
     </PostFormProvider>
-  )
+  );
 }

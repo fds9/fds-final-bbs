@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PostListContainer from '../containers/PostListContainer';
-import {PostListProvider} from '../contexts/PostListContext';
+import { PostListProvider } from '../contexts/PostListContext';
 import NavBarContainer from '../containers/NavBarContainer';
 import MainLayout from '../components/MainLayout';
 

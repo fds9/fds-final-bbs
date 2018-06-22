@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PostListItem from './PostListItem';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function PostList({
   posts = [], // 게시글 목록
@@ -16,11 +16,7 @@ export default function PostList({
           <Link to="/posts/new">새 게시글</Link>
         </div>
       </div>
-      <ul>
-        {posts.map(post => (
-          <PostListItem key={post.id} {...post} />
-        ))}
-      </ul>
+      <ul>{posts.map(post => <PostListItem key={post.id} {...post} />)}</ul>
     </div>
-  )
-} 
+  );
+}

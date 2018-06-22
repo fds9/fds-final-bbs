@@ -5,13 +5,11 @@ import StoryRouter from 'storybook-react-router';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import PostForm from './PostForm'
+import PostForm from './PostForm';
 
 storiesOf('PostForm', module)
   .addDecorator(StoryRouter())
-  .add('empty', () => (
-    <PostForm />
-  ))
+  .add('empty', () => <PostForm />)
   .add('with actions', () => (
     <PostForm
       title="title"
@@ -20,4 +18,4 @@ storiesOf('PostForm', module)
       onBodyChange={action('onBodyChange')}
       onSubmit={action('onSubmit')}
     />
-  ))
+  ));

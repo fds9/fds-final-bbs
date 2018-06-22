@@ -9,20 +9,20 @@ import PostList from './PostList';
 
 storiesOf('PostList', module)
   .addDecorator(StoryRouter())
-  .add('empty', () => (
-    <PostList />
-  ))
+  .add('empty', () => <PostList />)
   .add('with posts', () => (
-    <PostList posts={[
-      {
-        id: 1,
-        title: '게시글 제목 테스트',
-        author: '작성자 1'
-      },
-      {
-        id: 2,
-        title: '게시글 2',
-        author: '작성자 2'
-      }
-    ]} />
-  ))
+    <PostList
+      posts={[
+        {
+          id: 1,
+          title: '게시글 제목 테스트',
+          author: '작성자 1',
+        },
+        {
+          id: 2,
+          title: '게시글 2',
+          author: '작성자 2',
+        },
+      ]}
+    />
+  ));

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
-import {AuthProvider} from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 import LoginPage from './pages/LoginPage';
 import PostListPage from './pages/PostListPage';
 import PostPage from './pages/PostPage';
@@ -19,13 +19,17 @@ class App extends Component {
             <Route path="/posts/new" component={NewPostPage} />
             <Route path="/posts/:id/edit" component={EditPostPage} />
             <Route path="/posts/:id" component={PostPage} />
-            <Route exact path="/" render={() => (
-              localStorage.getItem('token') ? (
-                <Redirect to="/posts" />
-              ) : (
-                <Redirect to="/login" />
-              )
-            )} />}
+            <Route
+              exact
+              path="/"
+              render={() =>
+                localStorage.getItem('token') ? (
+                  <Redirect to="/posts" />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />}
           </Switch>
         </AuthProvider>
       </BrowserRouter>

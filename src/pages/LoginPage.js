@@ -12,6 +12,5 @@ export default function LoginPage() {
         <LoginFormContainer />
       </MainLayout>
     </React.Fragment>
-    
   );
 }
